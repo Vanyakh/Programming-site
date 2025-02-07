@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headphones</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    padding: 10px;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo img {
+    width: 100px;
+}
+
+nav.menu {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav.menu a {
+    text-decoration: none;
+    color: white;
+}
+
+nav.menu button {
+    background-color: #444;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+nav.menu button:hover {
+    background-color: #666;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 80px 20px 20px 20px;
+}
+
+.product-card {
+    width: calc(33.3333% - 40px); /* Уменьшаем ширину карточек, увеличив отступы */
+    margin-bottom: 40px; /* Увеличиваем отступ снизу */
+    margin-right: 40px; /* Увеличиваем отступ справа */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:nth-child(3n) {
+    margin-right: 0; /* Убираем отступ у последней карточки в ряду */
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-info {
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.product-info h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #333;
+}
+
+.product-info p {
+    font-size: 14px;
+    color: #666;
+}
+
+.product-info .price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-info button {
+    background-color: #333;
+    color: white;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.product-info button:hover {
+    background-color: #444;
+}
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="/img/original.png" alt="logo">
+    </div>
+    <nav class="menu">
+        <a href="index.html">
+            <div class="all"><button>Main page</button></div>
+        </a>
+        <a href="heaphones.html">
+            <div class="man"><button>Headphones</button></div>
+        </a>
+        <div class="children"><button>Column</button></div>
+        <div class="contact"><button>Contact us</button></div>
+        <div class="login"><button>Log in</button></div>
+    </nav>
+</header>
+
+<main>
+    <div class="products">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="/img/headphone1.jpg" alt="Headphone 1">
+            <div class="product-info">
+                <h3>Headphone Model 1</h3>
+                <p>Comfortable over-ear headphones with great sound quality.</p>
+                <p class="price">$99.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="/img/headphone2.jpg" alt="Headphone 2">
+            <div class="product-info">
+                <h3>Headphone Model 2</h3>
+                <p>Noise-cancelling headphones for an immersive experience.</p>
+                <p class="price">$129.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="/img/headphone3.jpg" alt="Headphone 3">
+            <div class="product-info">
+                <h3>Headphone Model 3</h3>
+                <p>Lightweight headphones with crystal clear sound.</p>
+                <p class="price">$79.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="/img/headphone4.jpg" alt="Headphone 4">
+            <div class="product-info">
+                <h3>Headphone Model 4</h3>
+                <p>Wireless headphones with a modern design.</p>
+                <p class="price">$149.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+            <img src="/img/headphone5.jpg" alt="Headphone 5">
+            <div class="product-info">
+                <h3>Headphone Model 5</h3>
+                <p>Great bass and a comfortable fit for long listening sessions.</p>
+                <p class="price">$119.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+            <img src="/img/headphone6.jpg" alt="Headphone 6">
+            <div class="product-info">
+                <h3>Headphone Model 6</h3>
+                <p>Affordable headphones with premium features.</p>
+                <p class="price">$89.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card">
+            <img src="/img/headphone7.jpg" alt="Headphone 7">
+            <div class="product-info">
+                <h3>Headphone Model 7</h3>
+                <p>High-fidelity sound for audiophiles.</p>
+                <p class="price">$199.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card">
+            <img src="/img/headphone8.jpg" alt="Headphone 8">
+            <div class="product-info">
+                <h3>Headphone Model 8</h3>
+                <p>Perfect for gaming with surround sound.</p>
+                <p class="price">$159.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product-card">
+            <img src="/img/headphone9.jpg" alt="Headphone 9">
+            <div class="product-info">
+                <h3>Headphone Model 9</h3>
+                <p>Portable, lightweight, and long-lasting battery life.</p>
+                <p class="price">$99.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product-card">
+            <img src="/img/headphone10.jpg" alt="Headphone 10">
+            <div class="product-info">
+                <h3>Headphone Model 10</h3>
+                <p>Best noise isolation for music lovers.</p>
+                <p class="price">$139.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product-card">
+            <img src="/img/headphone11.jpg" alt="Headphone 11">
+            <div class="product-info">
+                <h3>Headphone Model 11</h3>
+                <p>Stylish headphones with custom sound tuning.</p>
+                <p class="price">$179.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="product-card">
+            <img src="/img/headphone12.jpg" alt="Headphone 12">
+            <div class="product-info">
+                <h3>Headphone Model 12</h3>
+                <p>Smart features with integrated voice assistant.</p>
+                <p class="price">$199.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 13 -->
+        <div class="product-card">
+            <img src="/img/headphone13.jpg" alt="Headphone 13">
+            <div class="product-info">
+                <h3>Headphone Model 13</h3>
+                <p>Comfortable design with noise-canceling features.</p>
+                <p class="price">$109.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 14 -->
+        <div class="product-card">
+            <img src="/img/headphone14.jpg" alt="Headphone 14">
+            <div class="product-info">
+                <h3>Headphone Model 14</h3>
+                <p>Premium sound quality with a sleek look.</p>
+                <p class="price">$219.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <!-- Product 15 -->
+        <div class="product-card">
+            <img src="/img/headphone15.jpg" alt="Headphone 15">
+            <div class="product-info">
+                <h3>Headphone Model 15</h3>
+                <p>Exceptional sound and comfort for everyday use.</p>
+                <p class="price">$129.99</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

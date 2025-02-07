@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Marshall shop</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,19 +16,51 @@
         <button class="menu-toggle" aria-label="Открыть меню">☰</button>
         
         <nav class="menu">
-            <div class="all"><button>Main page</button></div>
-            <div class="man"><button>Headphones</button></div>
+            <a href="index.html">
+            <div class="all"><button>Main page</button></div></a>
+            <a href="heaphones.html">
+            <div class="man"><button>Headphones</button></div></a>
             <div class="children"><button>Column</button></div>
             <div class="contact"><button>Contact us</button></div>
-            <div class="login"><button>Login</button></div>
+            <div class="login"><button>Log in</button></div>
         </nav>
     </header>
-    <div class="story">
-        <h1>Story of the company</h1>
-        <div class="story-main">
-            Marshall Amplification is a British company that designs and manufactures music amplifiers, speaker cabinets, and effects pedals. Founded in London in 1962 by shop owner and drummer Jim Marshall, the company is based in Bletchley, Milton Keynes, England.
+    <div class="container">
+        <div class="product-card">
+            <div class="image-container">
+                <img src="img/marshall-major-v-black-01.jpg" alt="Marshall Major IV">
+            </div>
+            <div class="product-info">
+                <div class="product-title">Marshall Major V</div>
+                <div class="product-price">₴5,999</div>
+                <a href="https://www.youtube.com/watch?v=1qdSeXI0q-U&ab_channel=%D0%9C%D0%93%D0%95BRAWl" class="buy-button">Buy</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="image-container">
+                <img src="img/major4.jpeg" alt="Marshall Major IV">
+            </div>
+            <div class="product-info">
+                <div class="product-title">Marshall Major IV</div>
+                <div class="product-price">₴4,599</div>
+                <a href="https://www.youtube.com/watch?v=1qdSeXI0q-U&ab_channel=%D0%9C%D0%93%D0%95BRAWl" class="buy-button">Buy</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="image-container">
+                <img src="img/navushniki-marshall-headphones-m.png" alt="Marshall Major IV">
+            </div>
+            <div class="product-info">
+                <div class="product-title">Marshall Minor III</div>
+                <div class="product-price">₴3,999</div>
+                <a href="https://www.youtube.com/watch?v=1qdSeXI0q-U&ab_channel=%D0%9C%D0%93%D0%95BRAWl" class="buy-button">Buy</a>
+            </div>
         </div>
     </div>
+
+
     <script src="SkriptMain.js"></script>
 </body>
 </html>
