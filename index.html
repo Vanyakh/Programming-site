@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marshall shop</title>
+    <title>Marshall Shop</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
     <header>
         <div class="logo">
             <img src="/img/original.png" alt="logo">
@@ -17,14 +16,14 @@
         
         <nav class="menu">
             <a href="index.html">
-            <div class="all"><button>Main page</button></div></a>
-            <a href="heaphones.html">
-            <div class="man"><button>Headphones</button></div></a>
-            <div class="children"><button>Column</button></div>
-            <div class="contact"><button>Contact us</button></div>
-            <div class="login"><button>Log in</button></div>
+                <div class="all"><button>Main page</button></div>
+            </a>
+            <a href="cart.html">
+                <div class="login"><button id="cart-button">cart <span id="cart-count">0</span></button></div>
+            </a>
         </nav>
     </header>
+
     <div class="container">
         <div class="product-card">
             <div class="image-container">
@@ -33,7 +32,7 @@
             <div class="product-info">
                 <div class="product-title">Marshall Major V</div>
                 <div class="product-price">₴5,999</div>
-                <a href="https://www.youtube.com/watch?v=1qdSeXI0q-U&ab_channel=%D0%9C%D0%93%D0%95BRAWl" class="buy-button">Buy</a>
+                <a href="#" class="buy-button" data-id="1" data-title="Marshall Major V" data-price="5999" data-image="img/marshall-major-v-black-01.jpg">Buy</a>
             </div>
         </div>
 
@@ -44,7 +43,7 @@
             <div class="product-info">
                 <div class="product-title">Marshall Major IV</div>
                 <div class="product-price">₴4,599</div>
-                <a href="https://www.youtube.com/watch?v=1qdSeXI0q-U&ab_channel=%D0%9C%D0%93%D0%95BRAWl" class="buy-button">Buy</a>
+                <a href="#" class="buy-button" data-id="2" data-title="Marshall Major IV" data-price="4599" data-image="img/major4.jpeg">Buy</a>
             </div>
         </div>
 
@@ -55,11 +54,10 @@
             <div class="product-info">
                 <div class="product-title">Marshall Minor III</div>
                 <div class="product-price">₴3,999</div>
-                <a href="https://www.youtube.com/watch?v=1qdSeXI0q-U&ab_channel=%D0%9C%D0%93%D0%95BRAWl" class="buy-button">Buy</a>
+                <a href="#" class="buy-button" data-id="3" data-title="Marshall Minor III" data-price="3999" data-image="img/navushniki-marshall-headphones-m.png">Buy</a>
             </div>
         </div>
     </div>
-
 
     <script src="SkriptMain.js"></script>
 </body>

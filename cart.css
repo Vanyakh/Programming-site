@@ -1,0 +1,217 @@
+/* Загальні стилі для сторінки кошика */
+body {
+    font-family: Arial, sans-serif; /* Звичайний шрифт */
+    margin: 0;
+    padding: 0;
+    background-image: url('/img/download (3).jpeg'); /* Фон як на головній сторінці */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Хедер (такий самий, як на головній сторінці) */
+header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(119, 119, 119, 0.7); /* Напівпрозорий фон */
+    height: 50px;
+    border-radius: 50px;
+    margin-top: 5px;
+}
+
+header img {
+    position: fixed;
+    margin-top: -22px;
+    margin-left: 10px;
+    height: 40px;
+    width: auto;
+}
+
+.menu {
+    display: flex;
+    gap: 10px;
+}
+
+.menu button {
+    background-color: #b06f6f;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    height: 40px;
+    width: 170px;
+}
+
+.menu button:hover {
+    background-color: #894040;
+}
+
+.menu button:focus {
+    outline: none;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
+@media (max-width: 1080px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: rgba(119, 119, 119, 0.9);
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Лічильник товарів у кошику */
+#cart-button {
+    position: relative; /* Для позиціонування лічильника */
+}
+
+#cart-count {
+    position: absolute;
+    top: -8px; /* Зміщено вище */
+    right: -8px; /* Зміщено праворуч */
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+/* Контейнер для кошика */
+.cart-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Напівпрозорий білий фон */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+/* Стилі для списку товарів у кошику */
+#cart-items {
+    margin-bottom: 30px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+    margin-left: 15px;
+}
+
+.cart-item-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cart-item-price {
+    font-size: 16px;
+    color: #d9534f;
+}
+
+.remove-item {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-item:hover {
+    background-color: #cc0000;
+}
+
+/* Стилі для форми замовлення */
+.order-form {
+    margin-top: 30px;
+}
+
+.order-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.order-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #555;
+}
+
+.order-form input,
+.order-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.order-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.order-form button:hover {
+    background-color: #444;
+}
