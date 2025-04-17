@@ -3,61 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marshall Shop</title>
+    <title>Sheeses</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="/img/original.png" alt="logo">
+            <img src="/img/logo-removebg-preview (1).png" alt="logo">
         </div>
         
         <button class="menu-toggle" aria-label="Открыть меню">☰</button>
         
         <nav class="menu">
             <a href="index.html">
-                <div class="all"><button>Main page</button></div>
+                <div class="all"><button>На головну</button></div>
+            </a>
+            <a href="more-products.html">
+                <div class="more-products"><button>Переглянути все</button></div>
             </a>
             <a href="cart.html">
-                <div class="login"><button id="cart-button">cart <span id="cart-count">0</span></button></div>
+                <div class="login"><button id="cart-button">кошик <span id="cart-count">0</span></button></div>
             </a>
         </nav>
     </header>
 
+    <section class="baner">
+        <div class="carousel">
+            <div class="carousel-inner">
+                <img src="img/Більше 30 магазинів.png" alt="Банер 1">
+                <img src="img/Банер2.png" alt="Банер 2">
+                <img src="img/Банер3.png" alt="Банер 3">
+            </div>
+            <button class="prev">&lt;</button>
+            <button class="next">&gt;</button>
+        </div>
+    </section>
+
     <div class="container">
         <div class="product-card">
             <div class="image-container">
-                <img src="img/marshall-major-v-black-01.jpg" alt="Marshall Major IV">
+                <img src="img/2B1A7668-copy-e1712042987953.png" alt="Marshall Major IV">
+                <div class="product-description">
+                    <p>Емменталь — це класичний швейцарський сир з приємним ароматом і ніжним смаком.</p>
+                </div>
             </div>
             <div class="product-info">
-                <div class="product-title">Marshall Major V</div>
-                <div class="product-price">₴5,999</div>
-                <a href="#" class="buy-button" data-id="1" data-title="Marshall Major V" data-price="5999" data-image="img/marshall-major-v-black-01.jpg">Buy</a>
+                <div class="product-title">Емменталь</div>
+                <div class="product-price">₴800</div>
+                <a href="#" class="buy-button" data-id="1" data-title="Емменталь" data-image="img/2B1A7668-copy-e1712042987953.png">купити</a>
             </div>
         </div>
-
+    
         <div class="product-card">
             <div class="image-container">
-                <img src="img/major4.jpeg" alt="Marshall Major IV">
+                <img src="img/2B1A7621-copy-e1712042409359-1453x1024.png" alt="Marshall Major IV">
+                <div class="product-description">
+                    <p>Мармуровий сир — це поєднання ніжного вершкового смаку з елегантним зовнішнім виглядом.</p>
+                </div>
             </div>
             <div class="product-info">
-                <div class="product-title">Marshall Major IV</div>
-                <div class="product-price">₴4,599</div>
-                <a href="#" class="buy-button" data-id="2" data-title="Marshall Major IV" data-price="4599" data-image="img/major4.jpeg">Buy</a>
+                <div class="product-title">Мармуровий</div>
+                <div class="product-price">₴990</div>
+                <a href="#" class="buy-button" data-id="2" data-title="Мармуровий" data-image="img/2B1A7621-copy-e1712042409359-1453x1024.png" >купити</a>
             </div>
         </div>
-
+    
         <div class="product-card">
             <div class="image-container">
-                <img src="img/navushniki-marshall-headphones-m.png" alt="Marshall Major IV">
+                <img src="img/shees3.png" alt="Marshall Major IV">
+                <div class="product-description">
+                    <p>Maasdam — це голландський сир з великими дірками та солодкуватим смаком.</p>
+                </div>
             </div>
             <div class="product-info">
-                <div class="product-title">Marshall Minor III</div>
-                <div class="product-price">₴3,999</div>
-                <a href="#" class="buy-button" data-id="3" data-title="Marshall Minor III" data-price="3999" data-image="img/navushniki-marshall-headphones-m.png">Buy</a>
+                <div class="product-title">MAASDAM</div>
+                <div class="product-price">₴750</div>
+                <a href="#" class="buy-button" data-id="3" data-title="Maasdam" data-image="img/shees3.png">купити</a>
             </div>
         </div>
     </div>
+
+    <div class="about-us">
+        <div class="about-content">
+            <div class="founder-image">
+                <img src="img/zasnovnik.png" alt="Засновник компанії">
+            </div>
+            <div class="about-text">
+                <h2>Про нас</h2>
+                <p>Ми - компанія, яка професійно виготовляє сири з 2009 року. Наша історія почалася з невеликої сімейної ферми, де ми вперше спробували створити власний сир. Згодом наш ентузіазм перетворився на справжню страсть, і ми вирішили поділитися нашими унікальними рецептами зі світом.</p>
+                <p>Наші сири виготовляються з натуральних інгредієнтів, без штучних добавок. Ми пишаємося тим, що зберігаємо традиції виробництва сиру, водночас впроваджуючи сучасні технології для забезпечення високої якості продукції.</p>
+                <p>Сьогодні наша компанія є одним із лідерів на ринку сирів, і ми продовжуємо розвиватися, щоб радувати наших клієнтів новими смаками та видами сиру.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <p>Contact us:</p>
+                <p>Phone: +380 123 456 789</p>
+            </div>
+            <div class="social-media">
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://telegram.org" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://telegram.org" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://telegram.org" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
 
     <script src="SkriptMain.js"></script>
 </body>
