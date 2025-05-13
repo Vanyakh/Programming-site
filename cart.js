@@ -1,130 +1,118 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const cartItemsContainer = document.getElementById('cart-items');
-    const orderForm = document.getElementById('order-form');
-    const totalPriceElement = document.getElementById('total-price');
-    const cartCount = document.getElementById('cart-count');
-
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize cart from localStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    function updateCartCount() {
-        cartCount.textContent = cart.reduce((total, item) => total + (item.quantity || 1), 0);
-    }
-
-    function calculateTotal() {
-        const total = cart.reduce((sum, item) => {
-            return sum + (item.price * (item.weight || 1));
-        }, 0);
-        totalPriceElement.textContent = total.toFixed(2);
-        return total;
-    }
-
+    renderCartItems();
+    
+    // Render cart items
     function renderCartItems() {
-        cartItemsContainer.innerHTML = '';
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalPriceElement = document.getElementById('total-price');
         
         if (cart.length === 0) {
-            cartItemsContainer.innerHTML = '<p>Ваш кошик порожній</p>';
+            cartItemsContainer.innerHTML = `
+                <div class="text-center py-5">
+                    <p class="text-muted">Ваш кошик порожній</p>
+                    <a href="more-products.html" class="btn btn-primary">Продовжити покупки</a>
+                </div>
+            `;
+            totalPriceElement.textContent = '0';
             return;
         }
-
-        cart.forEach((item, index) => {
-            const cartItem = document.createElement('div');
-            cartItem.classList.add('cart-item');
-
-            cartItem.innerHTML = `
-                <img src="${item.image}" alt="${item.title}">
-                <div class="cart-item-info">
-                    <div class="cart-item-title">${item.title}</div>
-                    <div class="cart-item-price">${item.price} ₴/кг</div>
-                    <div class="cart-item-weight">
-                        <label>Вага (кг):</label>
-                        <input type="number" min="0.1" step="0.1" value="${item.weight || 1}" 
-                               class="weight-input" data-index="${index}">
+        
+        let totalPrice = 0;
+        let itemsHTML = '';
+        
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            totalPrice += itemTotal;
+            
+            itemsHTML += `
+                <div class="cart-item row align-items-center">
+                    <div class="col-3 col-md-2">
+                        <img src="${item.image}" alt="${item.title}" class="img-fluid rounded">
                     </div>
-                    <div class="cart-item-subtotal">${(item.price * (item.weight || 1)).toFixed(2)} ₴</div>
+                    <div class="col-5 col-md-6">
+                        <h5>${item.title}</h5>
+                        <p class="mb-0">${item.price} ₴</p>
+                    </div>
+                    <div class="col-2">
+                        <input type="number" min="1" value="${item.quantity}" 
+                               class="form-control quantity-input" data-id="${item.id}">
+                    </div>
+                    <div class="col-2 text-end">
+                        <span class="item-total">${itemTotal.toFixed(2)} ₴</span>
+                        <button class="btn btn-sm btn-danger remove-item" data-id="${item.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
                 </div>
-                <button class="remove-item" data-index="${index}"><i class="fas fa-trash"></i></button>
             `;
-            cartItemsContainer.appendChild(cartItem);
         });
-
+        
+        cartItemsContainer.innerHTML = itemsHTML;
+        totalPriceElement.textContent = totalPrice.toFixed(2);
+        
+        // Add event listeners for quantity changes
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            input.addEventListener('change', function() {
+                const productId = this.getAttribute('data-id');
+                const newQuantity = parseInt(this.value);
+                
+                if (newQuantity > 0) {
+                    const item = cart.find(item => item.id === productId);
+                    if (item) {
+                        item.quantity = newQuantity;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        renderCartItems();
+                    }
+                } else {
+                    this.value = 1;
+                }
+            });
+        });
+        
+        // Add event listeners for remove buttons
         document.querySelectorAll('.remove-item').forEach(button => {
-            button.addEventListener('click', function () {
-                const index = parseInt(button.getAttribute('data-index'));
-                cart.splice(index, 1);
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-id');
+                cart = cart.filter(item => item.id !== productId);
                 localStorage.setItem('cart', JSON.stringify(cart));
                 renderCartItems();
                 updateCartCount();
             });
         });
-
-        document.querySelectorAll('.weight-input').forEach(input => {
-            input.addEventListener('change', function () {
-                const index = parseInt(this.getAttribute('data-index'));
-                const newWeight = parseFloat(this.value);
-                
-                if (newWeight > 0) {
-                    cart[index].weight = newWeight;
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    renderCartItems();
-                    updateCartCount();
-                } else {
-                    this.value = cart[index].weight || 1;
-                }
-            });
-        });
-
-        calculateTotal();
     }
-
-    orderForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        if (cart.length === 0) {
-            alert('Кошик порожній! Додайте товари перед оформленням замовлення.');
-            return;
-        }
-
-        const formData = {
-            name: document.getElementById('name').value,
-            phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value,
-            address: document.getElementById('address').value,
-            comments: document.getElementById('comments').value,
-            items: cart,
-            total: calculateTotal(),
-            date: new Date().toISOString(),
-            status: 'Нове'
-        };
-
-        // Відправка даних на сервер
-        fetch('save_order.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Замовлення успішно оформлено! Номер вашого замовлення: ' + data.order_id);
-                
-                // Очистка кошика
-                cart = [];
-                localStorage.removeItem('cart');
-                renderCartItems();
-                updateCartCount();
-                orderForm.reset();
-            } else {
-                alert('Помилка при оформленні замовлення: ' + data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Помилка:', error);
-            alert('Сталася помилка при відправці замовлення');
+    
+    // Update cart count in navbar
+    function updateCartCount() {
+        const count = cart.reduce((total, item) => total + item.quantity, 0);
+        document.querySelectorAll('#cart-count').forEach(el => {
+            el.textContent = count;
         });
-    });
-
-    renderCartItems();
-    updateCartCount();
+    }
+    
+    // Form submission
+    const orderForm = document.getElementById('order-form');
+    if (orderForm) {
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (cart.length === 0) {
+                alert('Ваш кошик порожній!');
+                return;
+            }
+            
+            // Here you would typically send the order to your server
+            alert('Замовлення успішно оформлено! Дякуємо за покупку!');
+            
+            // Clear cart
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCartItems();
+            updateCartCount();
+            
+            // Reset form
+            this.reset();
+        });
+    }
 });

@@ -1,100 +1,47 @@
-document.querySelector('.menu-toggle').addEventListener('click', function() {
-  const menu = document.querySelector('.menu');
-  menu.classList.toggle('active');
-});
-
-
 document.addEventListener('DOMContentLoaded', function() {
-  const carouselInner = document.querySelector('.carousel-inner');
-  const images = document.querySelectorAll('.carousel-inner img');
-  const prevBtn = document.querySelector('.carousel .prev');
-  const nextBtn = document.querySelector('.carousel .next');
-  
-  let currentIndex = 0;
-  const totalImages = images.length;
-  let intervalId;
-  const intervalTime = 5000; // 3 секунди
-  
-  // Функція для переміщення каруселі
-  function moveToIndex(index) {
-      if (index >= totalImages) {
-          currentIndex = 0;
-      } else if (index < 0) {
-          currentIndex = totalImages - 1;
-      } else {
-          currentIndex = index;
-      }
-      
-      carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }
-  
-  // Функція для автоматичної прокрутки
-  function startAutoScroll() {
-      intervalId = setInterval(() => {
-          moveToIndex(currentIndex + 1);
-      }, intervalTime);
-  }
-  
-  // Запускаємо автоматичну прокрутку
-  startAutoScroll();
-  
-  // Обробники кнопок
-  nextBtn.addEventListener('click', () => {
-      clearInterval(intervalId);
-      moveToIndex(currentIndex + 1);
-      startAutoScroll();
-  });
-  
-  prevBtn.addEventListener('click', () => {
-      clearInterval(intervalId);
-      moveToIndex(currentIndex - 1);
-      startAutoScroll();
-  });
-  
-  // Пауза при наведенні
-  carouselInner.addEventListener('mouseenter', () => {
-      clearInterval(intervalId);
-  });
-  
-  // Продовження при відведенні курсору
-  carouselInner.addEventListener('mouseleave', startAutoScroll);
+    // Initialize cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    updateCartCount();
+    
+    // Add to cart functionality
+    document.querySelectorAll('.buy-button').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const productId = this.getAttribute('data-id');
+            const productTitle = this.getAttribute('data-title');
+            const productPrice = parseFloat(this.parentElement.querySelector('.card-text').textContent.replace('₴', ''));
+            const productImage = this.getAttribute('data-image');
+            
+            // Check if product already in cart
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: productId,
+                    title: productTitle,
+                    price: productPrice,
+                    image: productImage,
+                    quantity: 1
+                });
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            
+            // Show success message
+            alert(`${productTitle} додано до кошика!`);
+        });
+    });
+    
+    // Update cart count in navbar
+    function updateCartCount() {
+        const count = cart.reduce((total, item) => total + item.quantity, 0);
+        document.querySelectorAll('#cart-count').forEach(el => {
+            el.textContent = count;
+        });
+    }
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-  const cartCount = document.getElementById('cart-count');
-  const buyButtons = document.querySelectorAll('.buy-button');
-
-  
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-  
-  function updateCartCount() {
-      cartCount.textContent = cart.length;
-  }
-
-  
-  buyButtons.forEach(button => {
-      button.addEventListener('click', function (event) {
-          event.preventDefault();
-
-          const product = {
-              id: button.getAttribute('data-id'),
-              title: button.getAttribute('data-title'),
-              price: button.getAttribute('data-price'),
-              image: button.getAttribute('data-image'),
-          };
-
-          
-          cart.push(product);
-          localStorage.setItem('cart', JSON.stringify(cart));
-
-          
-          updateCartCount();
-          
-      });
-  });
-
-  
-  updateCartCount();
-});
-
